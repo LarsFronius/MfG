@@ -1,0 +1,5 @@
+[facter]
+append=datacenter.hostname
+[carbon]
+host=yourcarbonhost
+port=2003
