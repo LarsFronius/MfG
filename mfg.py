@@ -72,7 +72,7 @@ def facterstringfromconfig(file):
         append=socket.gethostname()+'.'
     return append
 
-def send_to_carbon(message,file='./config.inc'):
+def send_to_carbon(message,file='./config.ini'):
     c=ConfigParser.ConfigParser()
     if c.read(file):
         if c.has_section('carbon'):
@@ -89,7 +89,7 @@ def send_to_carbon(message,file='./config.inc'):
 
 while True:
         m=MuninClient('127.0.0.1')
-        append=facterstringfromconfig('./config.inc')
+        append=facterstringfromconfig('./config.ini')
         list=m.list()
         for item in list:
                 values=m.fetch(item)
