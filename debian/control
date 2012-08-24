@@ -1,0 +1,18 @@
+Source: mfg
+Maintainer: Lars Fronius <lars@jimdo.com>
+Section: python
+Priority: optional
+Build-Depends: debhelper (>= 7), python-support (>= 0.8.4)
+Standards-Version: 3.8.4
+XS-Python-Version: current
+
+Package: mfg
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+XB-Python-Version: ${python:Versions}
+Provides: ${python:Provides}
+Description: Munin-facter-Graphite daemon
+ MfG collects munin data and sends it to graphite.  Metric names are
+ configurable through facts. It is written in python.
+ .
+ http://www.youtube.com/watch?v=uUV3KvnvT-w
