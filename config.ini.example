@@ -1,5 +1,9 @@
+[mfg]
+interval = 60 ; in seconds
+
 [facter]
-append=datacenter.hostname
+prefix=servers.{datacenter}.{hostname}
+
 [carbon]
 host=yourcarbonhost
 port=2003

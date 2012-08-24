@@ -15,6 +15,5 @@ setup(name='MfG',
         url='https://github.com/Jimdo/MfG',
         py_modules = ['munin'],
         scripts=['mfg'],
-        data_files=[('doc', ['config.ini.example'])],
         )
 
