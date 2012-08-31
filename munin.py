@@ -32,3 +32,5 @@ class MuninClient(object):
                         values[k.split('.')[0]] = v.rstrip()
         return values
 
+    def close(self):
+        self.sock.close()

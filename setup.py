@@ -13,7 +13,7 @@ setup(name='MfG',
         author='Lars Fronius',
         author_email='lars@jimdo.com',
         url='https://github.com/Jimdo/MfG',
-        py_modules = ['munin'],
+        py_modules = ['munin','mfg'],
         scripts=['mfg'],
         )
 
