@@ -56,11 +56,18 @@ class CarbonClient(object):
         self._init_socket()
 
     def _init_socket(self):
-        try:
-            self.sock = socket.socket()
-            self.sock.connect((self.host, self.port))
-        except IOError, e:
-            raise e.__class__(e.errno, "%s:%s: %s" % (self.host, self.port, e.strerror))
+        for res in socket.getaddrinfo(self.host, self.port, socket.AF_UNSPEC, socket.SOCK_STREAM):
+            af, socktype, proto, cannonname, sa = res
+            try:
+                self.sock = socket.socket(af, socktype, proto)
+            except socket.error as msg:
+                s = None
+                continue
+            try: 
+                self.sock.connect(sa)
+            except IOError, e:
+                raise e.__class__(e.errno, "%s:%s: %s" % (self.host, self.port, e.strerror))
+            break
 
     def send(self, message):
         self.sock.sendall(message)
