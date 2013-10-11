@@ -102,6 +102,9 @@ def parse_command_line():
             help="use carbon port PORT, default: %s" % DEFAULT_CONFIG['carbon_port'], metavar="PORT")
     parser.add_option("-m", "--metric-prefix",
             help="prefix every sent metric with PREFIX, default: %s" % DEFAULT_CONFIG['metric_prefix'], metavar="PREFIX")
+    parser.add_option("-o",
+            help="run only once and exit",
+            action="store_true", dest="runonce", default=False)
     parser.add_option("-v", "--verbose", action="count", dest="verbose", help="be more verbose, may be used multiple times", default=0)
 
     (options, args) = parser.parse_args()
@@ -165,6 +168,9 @@ def main():
 
             messages = fetch_from_munin(munin_client)
             send_to_carbon(carbon_client, prefix, messages)
+
+            if config['runonce']:
+                break
 
             now = time.time()
             remaining_sleep = next_iteration - now
