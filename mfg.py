@@ -15,7 +15,8 @@ DEFAULT_CONFIG = {
 		'config_file': '/etc/mfg.ini',
 		'carbon_port': 2003,
 		'metric_prefix': '{hostname}.',
-		'interval': 60
+		'interval': 60,
+		'runonce': False
 		}
 
 def facter():
